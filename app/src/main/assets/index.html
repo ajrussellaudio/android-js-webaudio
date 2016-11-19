@@ -3,13 +3,18 @@
 <body>
 <h1 id="header">Can you hear it?</h1>
 <script>
-    var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    var audioContext = new window.AudioContext();
+
+    var osc = audioContext.createOscillator();
+    osc.connect(audioContext.destination);
 
     makeSound = function() {
-        var osc = audioContext.createOscillator();
         osc.frequency.value = 1000;
-        osc.connect(audioContext.destination);
         osc.start();
+    }
+
+    sliderChange = function(int) {
+        osc.frequency.value = 44 * int;
     }
 
     window.onload = makeSound();
