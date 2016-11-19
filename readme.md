@@ -8,5 +8,7 @@ This Android project accesses a local `index.html` file in the `assets` folder, 
 
 The MainActivity only news up the WebView and gives it permission to run JavaScript.
 
+The slider is an Android SeekBar view, whose `onProgressChanged` function is bound to a JavaScript `sliderChange` function, which sets the frequency value of the single oscillator to a multiple of the SeekBar's position.
+
 
 
