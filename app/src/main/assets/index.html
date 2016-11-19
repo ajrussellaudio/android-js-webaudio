@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1 id="header">Can you hear it?</h1>
+<script>
+    var audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+    makeSound = function() {
+        var osc = audioContext.createOscillator();
+        osc.frequency.value = 1000;
+        osc.connect(audioContext.destination);
+        osc.start();
+    }
+
+    window.onload = makeSound();
+</script>
+</body>
+</html>
