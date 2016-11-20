@@ -8,13 +8,19 @@
     var osc = audioContext.createOscillator();
     osc.connect(audioContext.destination);
 
-    makeSound = function() {
+    function makeSound() {
+        osc.type = "sawtooth";
         osc.frequency.value = 1000;
         osc.start();
     }
 
-    sliderChange = function(int) {
-        osc.frequency.value = 44 * int;
+    function midiToHz(noteNum) {
+        return Math.pow(2, (noteNum - 69) / 12) * 440;
+    }
+
+    function sliderChange(int) {
+        var freq = midiToHz(int);
+        osc.frequency.value = freq;
     }
 
     window.onload = makeSound();
